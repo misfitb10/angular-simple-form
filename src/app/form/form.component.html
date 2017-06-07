@@ -1,0 +1,86 @@
+<div class="form_container">
+	<h1>Simple form with FormBuilder</h1>
+
+	<form [formGroup]="simpleForm" (ngSubmit)="onSubmit(simpleForm.value)" class="form">
+		<div class="form_row">
+			<label class="form_label">First name<span class="required">*</span></label>
+			<input class="form_input" type="text" name="firstname"
+				[class.form_input--error]="!firstname.valid && firstname.touched"
+				[class.form_input--success]="firstname.valid"
+				[formControl]="simpleForm.controls['firstname']"
+			/>
+		</div>
+
+		<div class="form_row">
+			<label class="form_label">Last name<span class="required">*</span></label>
+			<input class="form_input" type="text" name="lastname"
+				[class.form_input--error]="!lastname.valid && lastname.touched"
+				[class.form_input--success]="lastname.valid"
+				[formControl]="simpleForm.controls['lastname']"
+			/>
+		</div>
+
+		<div class="form_row">
+			<label class="form_label">Company</label>
+			<input class="form_input" type="text" name="company"
+				[class.form_input--error]="!company.valid && company.touched"
+				[class.form_input--success]="company.valid"
+				[formControl]="simpleForm.controls['company']"
+			/>
+		</div>
+
+		<div class="form_row">
+			<label class="form_label">Email address<span class="required">*</span></label>
+			<input class="form_input" type="text" name="email"
+				[class.form_input--error]="!email.valid && email.touched"
+				[class.form_input--success]="email.valid"
+				[formControl]="simpleForm.controls['email']"
+				email
+			/>
+		</div>
+		
+		<div class="form_row">
+			<button class="form_button" type="submit" [disabled]="!simpleForm.valid">Send form</button>
+		</div>
+	</form>
+
+	<div class="form_results_container">
+		<div class="form_status">
+			<h2>form status</h2>
+			<p>
+				Is form valid?: <strong>{{simpleForm.valid}}</strong> <br/>
+				Is first name valid?: <strong>{{firstname.valid}}</strong> <br/>
+				Is last name valid?: <strong>{{lastname.valid}}</strong> <br/>
+				Is company valid?: <strong>{{company.valid}}</strong> <br/>
+				Is email valid?: <strong>{{email.valid}}</strong>
+			</p>
+		</div>
+
+		<div class="form_results form_results--interpolation">
+			<h2>with Interpolation</h2>
+			<p>Start typing in the input field to see the results directly:</p>
+			<div class="form_fieldvalue" *ngIf="firstname.value.length > 0">
+				<strong>First name:</strong> {{firstname.value}}
+			</div>
+
+			<div class="form_fieldvalue" *ngIf="lastname.value.length > 0">
+				<strong>Last name:</strong> {{lastname.value}}
+			</div>
+
+			<div class="form_fieldvalue" *ngIf="company.value.length > 0">
+				<strong>Company:</strong> {{company.value}}
+			</div>
+
+			<div class="form_fieldvalue" *ngIf="email.value.length > 0">
+				<strong>Email address:</strong> {{email.value}}
+			</div>
+		</div>
+		
+		<div class="form_results form_results--onSubmit">
+			<h2>with onSubmit</h2>
+			<p>Results of the fields will be displayed here after clicking on the button "Send form". <br/> See console log for the entire object.</p>
+
+			<div class="form_results--onSubmitPlaceholder"></div>
+		</div>
+	</div>
+</div>

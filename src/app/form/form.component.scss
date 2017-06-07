@@ -1,0 +1,72 @@
+.form {
+	padding: 30px 40px;
+	background-color: #f1f1f1;
+
+	&_container {
+		max-width: 800px;
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	&_row {
+		position: relative;
+		border: 2px solid transparent;
+		padding: 5px 0;
+		margin: 5px 0;
+		transition: all 0.5s;
+	}
+
+	&_label {
+		display: inline-block;
+		max-width: 150px;
+		width: 100%;
+	}
+
+	&_input {
+		padding: 10px;
+		min-width: 300px;
+		transition: all 0.5s;
+
+		&--success {
+			border: 1px solid green;
+		}
+
+		&--error {
+			border: 1px solid red;
+		}
+	}
+
+	button {
+		background-color: #fefefe;
+		border: 1px solid transparent;
+		padding: 10px 20px;
+		transition: all 0.25s;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #00c491;
+			color: #fff;
+		}
+
+		&:focus {
+			border: 1px dashed #ccc;
+		}
+
+		&[disabled] {
+			background-color: #ccc;
+			color: #aaa;
+			cursor: default;
+		}
+	}
+
+	&_results {
+		margin: 0 0 15px 0;
+	}
+}
+
+// Required '*' (asterix)
+.required {
+	color: red;
+	margin-left: 2px;
+}
